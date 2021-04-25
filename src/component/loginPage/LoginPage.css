@@ -1,0 +1,64 @@
+.backdrop {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_container {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  background-color: #f3f3f3;
+  border: 1px solid #e3e3e3;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 7);
+  padding: 20px 40px;
+  border-radius: 10px;
+}
+.error {
+  width: 100%;
+  font-size: 12px;
+  color: red;
+}
+.login_container > div {
+  padding: 10px;
+}
+.login_button_contianer {
+  display: flex;
+  justify-content: space-between;
+}
+.login_container > div > span {
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login_container > div > button {
+  padding: 5px 10px;
+  border: 1px solid #e3e3e3;
+  background-color: #ffffff;
+  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.login-container > div > button:active {
+  transform: translateY(1px);
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.success_popup {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #f3f3f3;
+}
