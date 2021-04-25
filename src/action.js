@@ -2,7 +2,6 @@ import axios from "axios";
 
 export const instance = axios.create({
   baseURL: "https://google-map-img-be.herokuapp.com/",
-  // timeout: 1000,
 });
 
 export const createUser = (body) => {
