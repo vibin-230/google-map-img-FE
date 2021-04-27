@@ -7,3 +7,9 @@
   padding: 10px 20px;
   border: 1px solid #eceeec;
 }
+
+.map_buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}

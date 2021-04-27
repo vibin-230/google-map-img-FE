@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import "pepjs";
 import {
   FreeCamera,
   Vector3,
@@ -9,6 +10,8 @@ import {
   Texture,
   PointLight,
   DirectionalLight,
+  Color3,
+  PointerEventTypes,
 } from "@babylonjs/core";
 import SceneComponent from "../scene";
 import venueManager from "../venueManager.png";
@@ -16,7 +19,7 @@ import "./SceneWrapper.css";
 
 let box;
 
-const onSceneReady = (scene, img) => {
+const onSceneReady = (scene, img, onClickRightDialogue) => {
   // This creates and positions a free camera (non-mesh)
   var camera = new ArcRotateCamera(
     "camera1",
@@ -28,6 +31,15 @@ const onSceneReady = (scene, img) => {
   );
 
   const canvas = scene.getEngine().getRenderingCanvas();
+  scene.clearColor = new Color3(0.8, 0.8, 0.8);
+
+  scene.onPointerObservable.add((pointerInfo) => {
+    switch (pointerInfo.type) {
+      case PointerEventTypes.POINTERDOWN:
+        onClickRightDialogue("");
+        break;
+    }
+  });
 
   camera.attachControl(canvas, true);
 
@@ -56,14 +68,23 @@ const onRender = (scene) => {
   }
 };
 
-export default (props) => (
-  <div>
+export default (props) => {
+  const getNumOfBoxes = (props) => {
+    props.setNoOfBoxes(8);
+  };
+  useEffect(() => {
+    getNumOfBoxes(props);
+  }, []);
+
+  return (
     <SceneComponent
       antialias
       onSceneReady={onSceneReady}
+      setCaptureMap={props.setCaptureMap}
       captureMap={props.captureMap}
+      onClickRightDialogue={props.onClickRightDialogue}
       onRender={onRender}
       id="my-canvas"
     />
-  </div>
-);
+  );
+};

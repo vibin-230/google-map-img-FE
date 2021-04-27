@@ -22,11 +22,12 @@ export default (props) => {
         adaptToDeviceRatio
       );
       const scene = new Scene(engine, sceneOptions);
+
       if (scene.isReady()) {
-        onSceneReady(scene, props.captureMap);
+        onSceneReady(scene, props.captureMap, props.onClickRightDialogue);
       } else {
         scene.onReadyObservable.addOnce((scene) =>
-          onSceneReady(scene, props.captureMap)
+          onSceneReady(scene, props.captureMap, props.onClickRightDialogue)
         );
       }
 

@@ -76,21 +76,33 @@ export default class Map extends Component {
             googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMG_RDX0SnmkWUy7vBSMURe7n15q0q6aA&v=3.exp&libraries=geometry,drawing,places"
             loadingElement={<div style={{ height: `100%`, width: "100%" }} />}
             containerElement={
-              <div style={{ height: `400px`, minWidth: "400px" }} />
+              <div
+                style={{
+                  height: `300px`,
+                  minWidth: "400px",
+                  borderRadius: "8px",
+                }}
+              />
             }
-            mapElement={<div style={{ height: `100%`, width: "100%" }} />}
+            mapElement={
+              <div
+                style={{ height: `100%`, width: "100%", borderRadius: "8px" }}
+              />
+            }
           />
         </div>
-        <button
-          className="capture_button"
-          onClick={() => this.captureMapOnClick()}
-        >
-          Capture
-        </button>
+        <div className="map_buttons">
+          <button
+            className="capture_button"
+            onClick={() => this.captureMapOnClick()}
+          >
+            Capture
+          </button>
 
-        <button className="save_button" onClick={() => this.saveImage()}>
-          Save Image
-        </button>
+          <button className="save_button" onClick={() => this.saveImage()}>
+            Save Image
+          </button>
+        </div>
       </>
     );
   }
