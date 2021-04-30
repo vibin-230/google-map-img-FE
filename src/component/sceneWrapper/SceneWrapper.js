@@ -82,6 +82,11 @@ const onSceneReady = (
           top: "50vh",
           left: "50vw",
         });
+      }else {
+        setText("")
+        setSuggestion({
+          show:false
+        })
       }
       // createBox();
     });
