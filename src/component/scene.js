@@ -24,10 +24,22 @@ export default (props) => {
       const scene = new Scene(engine, sceneOptions);
 
       if (scene.isReady()) {
-        onSceneReady(scene, props.captureMap, props.onClickRightDialogue);
+        onSceneReady(
+          scene,
+          props.captureMap,
+          props.onClickRightDialogue,
+          props.setSuggestion,
+          props.setText
+        );
       } else {
         scene.onReadyObservable.addOnce((scene) =>
-          onSceneReady(scene, props.captureMap, props.onClickRightDialogue)
+          onSceneReady(
+            scene,
+            props.captureMap,
+            props.onClickRightDialogue,
+            props.setSuggestion,
+            props.setText
+          )
         );
       }
 
