@@ -17,6 +17,10 @@ const App = () => {
   const [captureMap, setCaptureMap] = useState(venueManager);
   const [noOfBoxes, setNoOfBoxes] = useState(0);
   const [text, setText] = useState("");
+  const [inputTextValue, setInputTextValue] = useState({
+    show: false,
+    text: "",
+  });
   const [suggestion, setSuggestion] = useState({
     show: false,
     top: 0,
@@ -36,7 +40,6 @@ const App = () => {
   ];
 
   const handleClickOutside = (e) => {
-    console.log(rightDialogueRef);
     if (
       rightDialogueRef.current !== null &&
       !rightDialogueRef.current.contains(e.target)
@@ -59,6 +62,10 @@ const App = () => {
   useEffect(() => {
     console.log("number of boxes", noOfBoxes);
   }, [noOfBoxes]);
+
+  useEffect(() => {
+    console.log("input t ext value", inputTextValue);
+  }, [inputTextValue]);
   useEffect(() => {
     if (!loginScreen) {
       let body = {
@@ -191,14 +198,27 @@ const App = () => {
                     top: suggestion.top,
                     left: suggestion.left,
                     background: "#ffffff",
-                    width: "fit-content",
+                    width: 200,
                     padding: "10px",
-                    height: 100,
+                    borderRadius: 10,
+                    boxShadow: "0 3px 10px rgba(0,0,0,0.2)",
+                    height: 150,
                     overflow: "scroll",
                   }}
                 >
                   {filtered.map((a) => (
-                    <span>{a}</span>
+                    <span
+                      onClick={() => {
+                        setInputTextValue({ text: a, show: true });
+                      }}
+                      style={{
+                        background: "#f3f3f3",
+                        margin: "10px 0",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {a}
+                    </span>
                   ))}
                 </span>
               )}
@@ -208,6 +228,8 @@ const App = () => {
                 setSuggestion={setSuggestion}
                 setCaptureMap={setCaptureMap}
                 setNoOfBoxes={setNoOfBoxes}
+                inputTextValue={inputTextValue}
+                setInputTextValue={setInputTextValue}
                 setText={setText}
                 noOfBoxes={noOfBoxes}
                 onClickRightDialogue={onClickRightDialogue}

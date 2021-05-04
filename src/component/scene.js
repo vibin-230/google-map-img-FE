@@ -29,7 +29,9 @@ export default (props) => {
           props.captureMap,
           props.onClickRightDialogue,
           props.setSuggestion,
-          props.setText
+          props.setText,
+          props.inputTextValue,
+          props.setInputTextValue
         );
       } else {
         scene.onReadyObservable.addOnce((scene) =>
@@ -38,7 +40,9 @@ export default (props) => {
             props.captureMap,
             props.onClickRightDialogue,
             props.setSuggestion,
-            props.setText
+            props.setText,
+            props.inputTextValue,
+            props.setInputTextValue
           )
         );
       }
@@ -66,7 +70,7 @@ export default (props) => {
         }
       };
     }
-  }, [reactCanvas, props.captureMap]);
+  }, [reactCanvas, props.captureMap, props.inputTextValue.show]);
 
   return <canvas ref={reactCanvas} {...rest} />;
 };
