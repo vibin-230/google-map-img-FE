@@ -86,16 +86,16 @@ const App = () => {
   let filtered = arrayOfWord.filter((a) => a.includes(text));
   return (
     <div className="app">
-      {/* {loginScreen ? (
+      {loginScreen ? (
         <LoginPage
           setLoginScreen={setLoginScreen}
           setLoggedInUser={setLoggedInUser}
         />
-      ) : ( */}
-      <>
-        <NavBar />
-        <div className="base_wrapper">
-          {/* <div className="map">
+      ) : (
+        <>
+          <NavBar />
+          <div className="base_wrapper">
+            {/* <div className="map">
               <Map
                 loggedInUser={loggedInUser}
                 setCaptureMap={setCaptureMap}
@@ -123,122 +123,122 @@ const App = () => {
                 <button onClick={onSignOutClick}>Sign Out</button>
               </div>
             </div> */}
-          <div className="scene">
-            <div className="right_controls">
-              <span
-                style={{
-                  border:
-                    rightDialogueValue === "map"
-                      ? "1px solid black"
-                      : "1px solid transparent",
-                }}
-                onClick={() => onClickRightDialogue("map")}
-              >
-                Map
-              </span>
-              <span
-                style={{
-                  border:
-                    rightDialogueValue === "account"
-                      ? "1px solid black"
-                      : "1px solid transparent",
-                }}
-                onClick={() => onClickRightDialogue("account")}
-              >
-                Acc.
-              </span>
-            </div>
-
-            {rightDialogueValue === "map" && (
-              <>
-                <div className="map_dialogue_box" ref={rightDialogueRef}>
-                  <div>
-                    <Map
-                      loggedInUser={loggedInUser}
-                      setCaptureMap={setCaptureMap}
-                      captureMap={captureMap}
-                      setImageUpdated={setImageUpdated}
-                      imageUpdated={imageUpdated}
-                    />
-                  </div>
-                </div>
-              </>
-            )}
-            {rightDialogueValue === "account" && (
-              <>
-                <div className="map_dialogue_box" ref={rightDialogueRef}>
-                  <div className="details_container">
-                    <span>
-                      User: <span>{userName}</span>{" "}
-                    </span>
-                    <span className="details_contianer_img">
-                      {" "}
-                      Saved image:{" "}
-                      {
-                        <img
-                          src={image}
-                          alt="user_map_image"
-                          style={{ width: "100px", height: "100px" }}
-                        />
-                      }
-                    </span>
-
-                    <span>No of boxes : {noOfBoxes}</span>
-                  </div>
-                </div>
-              </>
-            )}
-            <div className="scene_wrapper">
-              {suggestion.show && filtered.length > 0 && (
+            <div className="scene">
+              <div className="right_controls">
                 <span
                   style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    position: "absolute",
-                    top: suggestion.top,
-                    left: suggestion.left,
-                    background: "#ffffff",
-                    width: 200,
-                    padding: "10px",
-                    borderRadius: 10,
-                    boxShadow: "0 3px 10px rgba(0,0,0,0.2)",
-                    height: 150,
-                    overflow: "scroll",
+                    border:
+                      rightDialogueValue === "map"
+                        ? "1px solid black"
+                        : "1px solid transparent",
                   }}
+                  onClick={() => onClickRightDialogue("map")}
                 >
-                  {filtered.map((a) => (
-                    <span
-                      onClick={() => {
-                        setInputTextValue({ text: a, show: true });
-                      }}
-                      style={{
-                        background: "#f3f3f3",
-                        margin: "10px 0",
-                        cursor: "pointer",
-                      }}
-                    >
-                      {a}
-                    </span>
-                  ))}
+                  Map
                 </span>
+                <span
+                  style={{
+                    border:
+                      rightDialogueValue === "account"
+                        ? "1px solid black"
+                        : "1px solid transparent",
+                  }}
+                  onClick={() => onClickRightDialogue("account")}
+                >
+                  Acc.
+                </span>
+              </div>
+
+              {rightDialogueValue === "map" && (
+                <>
+                  <div className="map_dialogue_box" ref={rightDialogueRef}>
+                    <div>
+                      <Map
+                        loggedInUser={loggedInUser}
+                        setCaptureMap={setCaptureMap}
+                        captureMap={captureMap}
+                        setImageUpdated={setImageUpdated}
+                        imageUpdated={imageUpdated}
+                      />
+                    </div>
+                  </div>
+                </>
               )}
-              <SceneWrapper
-                captureMap={captureMap}
-                words={arrayOfWord}
-                setSuggestion={setSuggestion}
-                setCaptureMap={setCaptureMap}
-                setNoOfBoxes={setNoOfBoxes}
-                inputTextValue={inputTextValue}
-                setInputTextValue={setInputTextValue}
-                setText={setText}
-                noOfBoxes={noOfBoxes}
-                onClickRightDialogue={onClickRightDialogue}
-              />
+              {rightDialogueValue === "account" && (
+                <>
+                  <div className="map_dialogue_box" ref={rightDialogueRef}>
+                    <div className="details_container">
+                      <span>
+                        User: <span>{userName}</span>{" "}
+                      </span>
+                      <span className="details_contianer_img">
+                        {" "}
+                        Saved image:{" "}
+                        {
+                          <img
+                            src={image}
+                            alt="user_map_image"
+                            style={{ width: "100px", height: "100px" }}
+                          />
+                        }
+                      </span>
+
+                      <span>No of boxes : {noOfBoxes}</span>
+                    </div>
+                  </div>
+                </>
+              )}
+              <div className="scene_wrapper">
+                {suggestion.show && filtered.length > 0 && (
+                  <span
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      position: "absolute",
+                      top: suggestion.top,
+                      left: suggestion.left,
+                      background: "#ffffff",
+                      width: 200,
+                      padding: "10px",
+                      borderRadius: 10,
+                      boxShadow: "0 3px 10px rgba(0,0,0,0.2)",
+                      height: 150,
+                      overflow: "scroll",
+                    }}
+                  >
+                    {filtered.map((a) => (
+                      <span
+                        onClick={() => {
+                          setInputTextValue({ text: a, show: true });
+                        }}
+                        style={{
+                          background: "#f3f3f3",
+                          margin: "10px 0",
+                          cursor: "pointer",
+                        }}
+                      >
+                        {a}
+                      </span>
+                    ))}
+                  </span>
+                )}
+                <SceneWrapper
+                  captureMap={captureMap}
+                  words={arrayOfWord}
+                  setSuggestion={setSuggestion}
+                  setCaptureMap={setCaptureMap}
+                  setNoOfBoxes={setNoOfBoxes}
+                  inputTextValue={inputTextValue}
+                  setInputTextValue={setInputTextValue}
+                  setText={setText}
+                  noOfBoxes={noOfBoxes}
+                  onClickRightDialogue={onClickRightDialogue}
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </>
-      {/* )} */}
+        </>
+      )}
     </div>
   );
 };
